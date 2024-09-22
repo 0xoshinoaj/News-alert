@@ -8,7 +8,7 @@ from webhook_sender import send_webhook
 from utils.memory import update_memory, load_sent_articles
 from scrapers.generic_scraper import scrape
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 def load_config():
     with open('config.json', 'r', encoding='utf-8') as f:
