@@ -1,19 +1,44 @@
-# News-alert# 區塊鏈新聞爬蟲
+# 區塊鏈新聞爬蟲
 
-這個項目爬取多個區塊鏈新聞網站，並將新聞發送到 Discord。
+這個項目自動爬取多個區塊鏈新聞網站，並將新聞發送到 Discord 頻道。
 
-## 安裝
+## 首次使用說明
 
-1. 克隆此儲存庫
-2. 安裝依賴：`pip install -r requirements.txt`
-3. 在 `config.json` 中設置您的 Discord webhook URL
+1. 安裝依賴
+   確保您已安裝 Python 3.7 或更高版本，然後運行：
+   ```
+   pip install -r requirements.txt
+   ```
 
-## 運行
+2. 配置文件
+   - 複製 `config-sample.json` 並重命名為 `config.json`
+   - 在 `config.json` 中填入您的 Discord webhook URL 和目標新聞網站信息
 
-執行 `python main.py`
+3. 運行程序
+   在命令行中運行：
+   ```
+   python main.py
+   ```
 
-## 添加新的新聞來源
+4. 驗證
+   檢查您的 Discord 頻道，確認新聞是否正確發送 (第一次會大量發送爬到的新聞，可以先執行一次後直接停止並重新啟動)
 
-1. 在 `scrapers/` 目錄下創建新的爬蟲文件
-2. 在 `utils/data_processing.py` 中添加新的提取邏輯
-3. 在 `main.py` 中導入並使用新的爬蟲
+## 如何新增網站
+
+1. 更新 `config.json`
+   在 `websites` 數組中添加新網站信息，例如：
+   ```json
+   {
+     "name": "NewWebsite",
+     "url": "https://www.newwebsite.com/news"
+   }
+   ```
+
+2. 修改 `utils/data_processing.py`
+   在 `extract_articles` 函數中添加新網站的解析邏輯：
+   ```python
+   elif source == 'NewWebsite':
+       elements = soup.find_all('div', class_='article-title')  # 根據新網站的HTML結構調整
+   ```
+
+3. 測試

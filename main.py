@@ -1,8 +1,12 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import time
 import json
-import importlib
 from webhook_sender import send_webhook
 from utils.memory import update_memory
+from scrapers.generic_scraper import scrape
 
 def load_config():
     with open('config.json', 'r', encoding='utf-8') as f:
@@ -17,8 +21,7 @@ def main():
         for website in config['websites']:
             print(f"正在爬取 {website['name']} 的新聞 (URL: {website['url']})...")
             try:
-                scraper_module = importlib.import_module(f"scrapers.{website['scraper']}")
-                site_news = scraper_module.scrape(website['url'], website['name'])
+                site_news = scrape(website['url'], website['name'])
                 all_news_items.extend(site_news)
                 print(f"從 {website['name']} 爬取到 {len(site_news)} 條新聞")
             except Exception as e:
