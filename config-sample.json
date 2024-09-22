@@ -1,0 +1,15 @@
+{
+    "websites": [
+      {
+        "name": "News website 1",
+        "url": "Website URL 1",
+        "scraper": "scraper_file_name 1 "
+      },
+      {
+        "name": "News website 2",
+        "url": "Website URL 2",
+        "scraper": "scraper_file_name 2"
+      }
+    ],
+    "webhook_url": "Your_Webhook_URL"
+  }
