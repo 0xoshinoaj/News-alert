@@ -1,15 +1,17 @@
-{
+  {
     "websites": [
       {
-        "name": "News website 1",
-        "url": "Website URL 1",
-        "scraper": "scraper_file_name 1 "
+        "name": "動區動趨", 
+        "url": "https://www.blocktempo.com/2024/"
       },
       {
-        "name": "News website 2",
-        "url": "Website URL 2",
-        "scraper": "scraper_file_name 2"
+        "name": "鏈新聞",
+        "url": "https://abmedia.io/blog"
+      },
+      {
+        "name": "website name",
+        "url": "website url"
       }
     ],
     "webhook_url": "Your_Webhook_URL"
-  }
+}
