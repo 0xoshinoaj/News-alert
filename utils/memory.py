@@ -15,8 +15,7 @@ def save_sent_articles(sent_articles):
 
 def update_memory(new_articles):
     sent_articles = load_sent_articles()
-    new_articles_set = set(article['link'] for article in new_articles)
     unsent_articles = [article for article in new_articles if article['link'] not in sent_articles]
-    sent_articles.update(new_articles_set)
+    sent_articles.update(article['link'] for article in unsent_articles)
     save_sent_articles(sent_articles)
     return unsent_articles

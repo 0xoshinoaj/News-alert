@@ -1,4 +1,4 @@
-# 區塊鏈新聞爬蟲 [v1.2.0]
+# 區塊鏈新聞爬蟲 [v1.2.1]
 
 這個項目自動爬取多個區塊鏈新聞網站，並將新聞發送到 Discord 頻道。
 
@@ -10,9 +10,9 @@
    pip install -r requirements.txt
    ```
 
-2. 配置文件
-   - 複製 `config-sample.json` 並重命名為 `config.json`
-   - 在 `config.json` 中填入您的 Discord webhook URL 和目標新聞網站信息
+2. 設置文件
+   - 將 `config-SAMPLE.json` 重新命名為 `config.json`
+   - 在 `config.json` 中填入您的 Discord webhook URL 和目標新聞網站資訊
 
 3. 運行程序
    在命令行中運行：
@@ -21,7 +21,7 @@
    ```
 
 4. 驗證
-   檢查您的 Discord 頻道，確認新聞是否正確發送 (第一次會大量發送爬到的新聞，可以先執行一次後直接停止並重新啟動)
+   檢查您的 Discord 頻道，確認新聞是否正確發送 (第一次會大量發送，可以先執行一次並中止後重新啟動)
 
 ## 如何新增網站
 

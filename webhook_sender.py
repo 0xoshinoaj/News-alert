@@ -11,7 +11,7 @@ def send_webhook(news_items):
     
     for item in news_items:
         payload = {
-            "content": f"「{item['source']}：{item['title']}」\n{item['link']}"
+            "content": f"【{item['source']}】{item['title']} {item['link']}"
         }
         
         response = requests.post(
