@@ -1,9 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
+
+# 初始化 UserAgent
+ua = UserAgent()
 
 def get_page(url):
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent': ua.random  # 隨機生成 User-Agent
     }
     response = requests.get(url, headers=headers)
     return BeautifulSoup(response.text, 'html.parser')
