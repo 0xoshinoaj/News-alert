@@ -18,6 +18,7 @@ Thumbs.db
 # Project specific
 sent_articles.json 
 config.json
+proxy.txt
 
 # Logs
 *.log
