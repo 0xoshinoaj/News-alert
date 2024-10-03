@@ -14,12 +14,9 @@ def send_webhook(news_items):
             "embeds": [
                 {
                     "title": item['title'],
-                    "description": f"來源: {item['source']}",
-                    "url": item['link'],
+                    "description": f"來源: {item['source']} | 時間: {item['readable_time']}",  # 添加可讀時間
+                    "url": item['link'],  # 這裡保留 link
                     "color": 0xffffff,  # 可選，顏色可以根據需要更改
-                    # "footer": {  # 刪除這一行以去掉底部文字
-                    #     "text": "這是底部文字"  # 可選，底部文字
-                    # },
                     "image": {
                         "url": item.get('image_url', '')  # 添加圖片 URL
                     }

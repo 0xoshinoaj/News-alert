@@ -53,3 +53,21 @@ def get_page(url):
 
     response = requests.get(url, headers=headers, proxies=proxy_dict)
     return BeautifulSoup(response.text, 'html.parser')
+
+def get_preview_image(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # 確保請求成功
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # 查找 Open Graph 標籤
+        og_image = soup.find('meta', property='og:image')
+        if og_image:
+            return og_image['content']  # 返回圖片 URL
+        else:
+            print("未找到 Open Graph 圖片標籤")
+            return None
+    except Exception as e:
+        print(f"獲取預覽圖片時發生錯誤: {e}")
+        return None

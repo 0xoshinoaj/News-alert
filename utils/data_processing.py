@@ -1,3 +1,5 @@
+from utils.http_utils import get_preview_image  # 引入新函數
+
 def extract_articles(soup, source):
     articles = []
     seen_links = set()  # 用於追踪已經見過的鏈接
@@ -14,7 +16,7 @@ def extract_articles(soup, source):
                 if link not in seen_links and title not in seen_titles:
                     seen_links.add(link)
                     seen_titles.add(title)
-                    articles.append({'source': source, 'title': title, 'link': link})
+                    articles.append({'source': source, 'title': title, 'link': link})  # 只添加 link 和 title
 
     if source == '動區動趨':
         elements = soup.find_all('article', class_='jeg_post jeg_pl_md_2 format-standard')
@@ -22,19 +24,16 @@ def extract_articles(soup, source):
             process_elements([article.find('h3', class_='jeg_post_title')])
 
     elif source == '鏈新聞':
-        # 只從 div class='loop-post' 中提取
         loop_posts = soup.find_all('div', class_='loop-post')
         for loop_post in loop_posts:
             elements = loop_post.find_all('h3', class_='title')
             process_elements(elements)
 
     elif source == '區塊客':
-        # 限制在特定的 article 標籤下提取
         elements = soup.find_all('article', class_='jeg_post jeg_pl_md_1 format-standard')
         for article in elements:
             process_elements([article.find('h3', class_='jeg_post_title')])
         
-        # 添加對 jeg_post jeg_pl_lg_box format-standard 的支持
         elements = soup.find_all('article', class_='jeg_post jeg_pl_lg_box format-standard')
         for article in elements:
             process_elements([article.find('h3', class_='jeg_post_title')])
