@@ -39,7 +39,6 @@ def main():
 
         if all_news_items:  # 檢查是否有新聞
             unsent_news = update_memory(all_news_items)
-            print("未發送的新聞項目:", unsent_news)
             if unsent_news:
                 print(f"發現了 {len(unsent_news)} 條新聞，準備發送...")
 
